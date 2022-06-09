@@ -3,8 +3,10 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Camera, CameraType } from 'expo-camera';
 
 export default function App() {
+  let cameraRef = useRef();
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [type, setType] = useState(CameraType.back);
+  const [photo, setPhoto] = useState();
 
   useEffect(() => {
     (async () => {
@@ -20,7 +22,25 @@ export default function App() {
     return <Text>Please allow access to camera in settings</Text>;
   }
 
+  let takePic = async () => {
+    let options = {
+      quality: 1,
+      base64: true,
+      skipProcessing: false,
+      exif: false,
+    };
 
+    if (!cameraRef.current) {
+      <Text>No access to camera</Text>;
+    }
+    try {
+      let newPhoto = await cameraRef.current.takePictureAsync(options);
+      console.log(newPhoto, 'you just took a photo');
+      setPhoto(newPhoto);
+    } catch (error) {
+      <Text>Error 🫠</Text>;
+    }
+  };
 
   return (
       <View style={styles.container}>
@@ -28,6 +48,7 @@ export default function App() {
           style={styles.camera}
           type={type}
           autoFocus="on"
+          ref={cameraRef}
         >
           <View style={styles.buttonContainer}>
             <TouchableOpacity
@@ -40,6 +61,13 @@ export default function App() {
               }}
             >
               <Text style={styles.text}> Flip </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              title="Translate!"
+              onPress={takePic}
+              styles={styles.captureButton}
+            >
+              <Text style={styles.text}>Translate!</Text>
             </TouchableOpacity>
           </View>
         </Camera>
@@ -66,6 +94,7 @@ const styles = StyleSheet.create({
     marginBottom: '5%',
     marginLeft: '5%',
   },
+  captureButton: {},
   text: {
     fontSize: 18,
     color: 'white',
