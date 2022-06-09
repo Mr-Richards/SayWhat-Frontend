@@ -1,9 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function CaptureButton({ cameraRef }) {
-  // let cameraRef = useRef();
   const [photo, setPhoto] = useState();
+  const navigation = useNavigation();
 
   let takePic = async () => {
     let options = {
@@ -29,7 +30,10 @@ export default function CaptureButton({ cameraRef }) {
     <TouchableOpacity
       title="Translate!"
       setCameraRef={cameraRef}
-      onPress={takePic}
+      onPress={() => {
+        takePic();
+        navigation.navigate('Translate');
+      }}
       styles={styles.captureButtonStyle}
     >
       <Text style={styles.text}>Translate!</Text>

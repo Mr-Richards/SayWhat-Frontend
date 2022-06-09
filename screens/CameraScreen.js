@@ -5,7 +5,6 @@ import FlipButton from '../components/FlipButton';
 import CaptureButton from '../components/CaptureButton';
 
 export default function CameraScreen() {
-  // let cameraRef = useRef();
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [type, setType] = useState(CameraType.back);
   const [cameraRef, setCameraRef] = useState(useRef());
