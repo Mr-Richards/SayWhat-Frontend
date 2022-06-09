@@ -1,12 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { CameraType } from 'expo-camera';
 
-export default function FlipButton() {
+export default function FlipButton({ setType }) {
   return (
     <TouchableOpacity
       style={styles.flipButtonStyle}
       onPress={() => {
-        setType(type === CameraType.back ? CameraType.front : CameraType.back);
+        setType((prev) =>
+          prev === CameraType.back ? CameraType.front : CameraType.back,
+        );
         console.log('Flipped');
       }}
     >

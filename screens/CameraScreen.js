@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Camera, CameraType } from 'expo-camera';
 import FlipButton from '../components/FlipButton';
 import CaptureButton from '../components/CaptureButton';
 
 export default function CameraScreen() {
-  let cameraRef = useRef();
+  // let cameraRef = useRef();
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [type, setType] = useState(CameraType.back);
+  const [cameraRef, setCameraRef] = useState(useRef());
 
   useEffect(() => {
     (async () => {
@@ -27,8 +28,8 @@ export default function CameraScreen() {
     <View style={styles.container}>
       <Camera style={styles.camera} type={type} autoFocus="on" ref={cameraRef}>
         <View style={styles.buttonContainer}>
-          <FlipButton></FlipButton>
-          <CaptureButton></CaptureButton>
+          <FlipButton setType={setType}></FlipButton>
+          <CaptureButton cameraRef={cameraRef}></CaptureButton>
         </View>
       </Camera>
     </View>

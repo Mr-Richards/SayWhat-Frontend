@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-export default function CaptureButton() {
-  let cameraRef = useRef();
+export default function CaptureButton({ cameraRef }) {
+  // let cameraRef = useRef();
   const [photo, setPhoto] = useState();
 
   let takePic = async () => {
@@ -14,6 +14,7 @@ export default function CaptureButton() {
     };
     if (!cameraRef.current) {
       <Text>No access to camera</Text>;
+      console.log('no camera ref');
     }
     try {
       let newPhoto = await cameraRef.current.takePictureAsync(options);
@@ -27,6 +28,7 @@ export default function CaptureButton() {
   return (
     <TouchableOpacity
       title="Translate!"
+      setCameraRef={cameraRef}
       onPress={takePic}
       styles={styles.captureButtonStyle}
     >
