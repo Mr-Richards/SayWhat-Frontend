@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { ImageToText } from '../utils/imageToText';
 
 export default function CaptureButton({ cameraRef, setPhoto }) {
   const navigation = useNavigation();
@@ -21,10 +20,9 @@ export default function CaptureButton({ cameraRef, setPhoto }) {
       let newPhoto = await cameraRef.current.takePictureAsync(options);
       console.log(newPhoto, 'you just took a photo');
       setPhoto(newPhoto);
-      ImageToText(newPhoto);
+      navigation.navigate('Translate');
     } catch (error) {
-      console.log(error, 'newPhoto error');
-      // <Text>Error 🫠</Text>;
+      console.log('newPhoto error', error);
     }
   };
 
@@ -34,7 +32,6 @@ export default function CaptureButton({ cameraRef, setPhoto }) {
       setCameraRef={cameraRef}
       onPress={() => {
         takePic();
-        navigation.navigate('Translate');
       }}
       styles={styles.captureButtonStyle}
     >

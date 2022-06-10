@@ -3,12 +3,11 @@ import CameraScreen from './screens/CameraScreen';
 import { Translate } from './screens/Translate';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { base64 } from './components/base64';
 
 const Stack = createStackNavigator();
 
 function App() {
-  const [photo, setPhoto] = useState(base64);
+  const [photo, setPhoto] = useState();
 
   return (
     <NavigationContainer>
@@ -16,7 +15,6 @@ function App() {
         <Stack.Screen name="Capture what you wish to translate">
           {() => <CameraScreen setPhoto={setPhoto} />}
         </Stack.Screen>
-
         <Stack.Screen name="Translate">
           {() => <Translate photo={photo} />}
         </Stack.Screen>

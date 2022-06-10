@@ -1,6 +1,5 @@
-// require('dotenv').config('../.env');
-
-export const ImageToText = (capturedPhoto) => {
+export const imageToText = (capturedPhoto) => {
+  console.log(capturedPhoto, 'capturedPhoto');
   const base64string = capturedPhoto.base64.replace(/^"(.+(?="$))"$/, '$1');
 
   const myHeaders = new Headers();
@@ -21,8 +20,8 @@ export const ImageToText = (capturedPhoto) => {
     redirect: 'follow',
   };
 
-  fetch('https://api.ocr.space/parse/image', requestOptions)
+  return fetch('https://api.ocr.space/parse/image', requestOptions)
     .then((response) => response.text())
-    .then((result) => console.log(result, 'result'))
-    .catch((error) => console.log('error', error));
+    .then((result) => result)
+    .catch((error) => console.log('Error from fetch api', error));
 };
