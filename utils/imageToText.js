@@ -7,6 +7,7 @@ export const imageToText = (capturedPhoto) => {
 
   const formdata = new FormData();
   formdata.append('language', 'eng');
+  formdata.append('detectOrientation', 'true');
   formdata.append('isOverlayRequired', 'false');
   formdata.append('iscreatesearchablepdf', 'false');
   formdata.append('issearchablepdfhidetextlayer', 'false');
@@ -23,5 +24,5 @@ export const imageToText = (capturedPhoto) => {
   return fetch('https://api.ocr.space/parse/image', requestOptions)
     .then((response) => response.text())
     .then((result) => result)
-    .catch((error) => console.log('Error from fetch api', error));
+    .catch((error) => console.log('Error from image recognition api', error));
 };
