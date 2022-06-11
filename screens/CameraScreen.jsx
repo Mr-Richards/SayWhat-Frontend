@@ -4,7 +4,7 @@ import { Camera, CameraType } from 'expo-camera';
 import FlipButton from '../components/FlipButton';
 import CaptureButton from '../components/CaptureButton';
 
-export default function CameraScreen({ setPhoto }) {
+export default function cameraScreen({ setPhoto }) {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [type, setType] = useState(CameraType.back);
   const [cameraRef, setCameraRef] = useState(useRef());

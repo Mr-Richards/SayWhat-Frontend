@@ -15,7 +15,7 @@ function App() {
         <Stack.Screen name="Capture what you wish to translate">
           {() => <CameraScreen setPhoto={setPhoto} />}
         </Stack.Screen>
-        <Stack.Screen name="Translate">
+        <Stack.Screen name="Translation">
           {() => <Translate photo={photo} />}
         </Stack.Screen>
       </Stack.Navigator>

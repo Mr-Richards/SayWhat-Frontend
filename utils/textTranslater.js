@@ -1,4 +1,4 @@
-export const textTranslater = (text) => {
+export const textTranslater = (text, language) => {
   const options = {
     method: 'POST',
     headers: {
@@ -11,7 +11,7 @@ export const textTranslater = (text) => {
 
   return (
     fetch(
-      'https://microsoft-translator-text.p.rapidapi.com/translate?api-version=3.0&to%5B0%5D=es-ES&textType=plain&profanityAction=NoAction',
+      `https://microsoft-translator-text.p.rapidapi.com/translate?api-version=3.0&to%5B0%5D=${language}&textType=plain&profanityAction=NoAction`,
       options,
     )
       .then((response) => response.text())
