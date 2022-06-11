@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
-import { View, Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  ScrollView,
+  SafeAreaView,
+} from 'react-native';
 import { imageToText } from '../utils/imageToText';
 import { textTranslater } from '../utils/textTranslater';
 import PickerComponent from '../components/LanguagePicker';
+import EditCapturedText from '../components/EditCapturedText';
 
 export function Translate({ photo }) {
   const [textFromPhoto, setTextFromPhoto] = useState();
   const [translatedText, setTranslatedText] = useState();
   const [language, setLanguage] = useState('en');
 
-  console.log(photo, 'Translate');
+  useEffect(() => {}, [textFromPhoto]);
 
   imageToText(photo)
     .then((result) => {
@@ -35,11 +42,20 @@ export function Translate({ photo }) {
     });
 
   return (
-    <View>
-      <Text>Translation screen</Text>
-      <Text>The text in the image says: {textFromPhoto} </Text>
-      <Text>In spanish this says: {translatedText} </Text>
-      <PickerComponent setLanguage={setLanguage} language={language} />
+    <View styels={styles.container}>
+      <ScrollView>
+        <Text>Translation screen</Text>
+        <Text>The text in the image says: {textFromPhoto} </Text>
+        {/* <EditCapturedText textFromPhoto={textFromPhoto} /> */}
+        <Text>In spanish this says: {translatedText} </Text>
+        <PickerComponent setLanguage={setLanguage} language={language} />
+      </ScrollView>
     </View>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+});

@@ -24,29 +24,26 @@ export default function cameraScreen({ setPhoto }) {
   }
 
   return (
-    <View style={styles.container}>
-      <Camera style={styles.camera} type={type} autoFocus="on" ref={cameraRef}>
-        <View style={styles.buttonContainer}>
-          <FlipButton setType={setType}></FlipButton>
-          <CaptureButton
-            setPhoto={setPhoto}
-            cameraRef={cameraRef}
-          ></CaptureButton>
-        </View>
-      </Camera>
-    </View>
+    <Camera style={styles.camera} type={type} autoFocus="on" ref={cameraRef}>
+      <View style={styles.buttonContainer}>
+        <FlipButton setType={setType}></FlipButton>
+        <CaptureButton
+          setPhoto={setPhoto}
+          cameraRef={cameraRef}
+        ></CaptureButton>
+      </View>
+    </Camera>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   camera: {
     flex: 1,
+    justifyContent: 'flex-end',
   },
   buttonContainer: {
-    flex: 1,
+    flex: 0.25,
+    justifyContent: 'center',
     backgroundColor: 'transparent',
     margin: 20,
   },

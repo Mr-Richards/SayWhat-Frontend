@@ -22,9 +22,8 @@ const styles = StyleSheet.create({
   flipButtonStyle: {
     flex: 1,
     alignSelf: 'flex-start',
-    justifyContent: 'flex-end',
-    marginBottom: '5%',
-    marginLeft: '5%',
+    justifyContent: 'center',
+    margin: '10%',
   },
   text: {
     fontSize: 18,

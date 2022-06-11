@@ -28,12 +28,12 @@ export default function captureButton({ cameraRef, setPhoto }) {
 
   return (
     <TouchableOpacity
+      styles={styles.captureButtonStyle}
       title="Translate!"
       setCameraRef={cameraRef}
       onPress={() => {
         takePic();
       }}
-      styles={styles.captureButtonStyle}
     >
       <Text style={styles.text}>Translate!</Text>
     </TouchableOpacity>
@@ -41,9 +41,10 @@ export default function captureButton({ cameraRef, setPhoto }) {
 }
 
 const styles = StyleSheet.create({
-  captureButtonStyle: {},
+  captureButtonStyle: {
+    flex: 1,
+  },
   text: {
-    fontSize: 18,
     color: 'white',
   },
 });

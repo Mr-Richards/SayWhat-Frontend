@@ -11,11 +11,11 @@ function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Capture what you wish to translate">
           {() => <CameraScreen setPhoto={setPhoto} />}
         </Stack.Screen>
-        <Stack.Screen name="Translation">
+        <Stack.Screen screenOptions={{ headerShown: true }} name="Translation">
           {() => <Translate photo={photo} />}
         </Stack.Screen>
       </Stack.Navigator>
