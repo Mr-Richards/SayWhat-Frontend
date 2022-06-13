@@ -21,12 +21,12 @@ export default function flipButton({ setType }) {
 const styles = StyleSheet.create({
   flipButtonStyle: {
     flex: 1,
-    alignSelf: 'flex-start',
     justifyContent: 'center',
-    margin: '10%',
+    // alignSelf: '',
+    margin: '5%',
   },
   text: {
-    fontSize: 18,
+    fontSize: 20,
     color: 'white',
   },
 });

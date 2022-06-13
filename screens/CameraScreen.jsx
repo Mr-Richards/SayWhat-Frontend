@@ -42,9 +42,10 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   buttonContainer: {
-    flex: 0.25,
-    justifyContent: 'center',
+    flex: 0.1,
+    width: '59%',
+    flexDirection: 'row',
     backgroundColor: 'transparent',
-    margin: 20,
+    margin: '5%',
   },
 });

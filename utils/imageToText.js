@@ -3,7 +3,7 @@ export const imageToText = (capturedPhoto) => {
   const base64string = capturedPhoto.base64.replace(/^"(.+(?="$))"$/, '$1');
 
   const myHeaders = new Headers();
-  // myHeaders.append('apikey', 'K84624067388957');
+  myHeaders.append('apikey', 'K84624067388957');
 
   const formdata = new FormData();
   formdata.append('language', 'eng');

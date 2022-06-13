@@ -7,7 +7,7 @@ export default function captureButton({ cameraRef, setPhoto }) {
 
   let takePic = async () => {
     let options = {
-      quality: 0.4,
+      quality: 0.3,
       base64: true,
       skipProcessing: false,
       exif: false,
@@ -43,8 +43,11 @@ export default function captureButton({ cameraRef, setPhoto }) {
 const styles = StyleSheet.create({
   captureButtonStyle: {
     flex: 1,
+    justifyContent: 'center',
+    margin: '5%',
   },
   text: {
     color: 'white',
+    fontSize: 30,
   },
 });
