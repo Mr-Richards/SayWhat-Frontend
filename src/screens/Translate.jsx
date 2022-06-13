@@ -14,33 +14,13 @@ import { imageToText } from '../utils/imageToText';
 import { textTranslater } from '../utils/textTranslater';
 import PickerComponent from '../components/LanguagePicker';
 import EditCapturedText from '../components/EditCapturedText';
-// import dummyTextTranslation from '../utils/dummyTextTranslation';
-// import handlePress from '../components/SumbitButton';
 
 export function Translate({ photo }) {
   const [textFromPhoto, setTextFromPhoto] = useState();
   const [translatedText, setTranslatedText] = useState('');
   const [language, setLanguage] = useState('es');
   const [textToTranslate, setTextToTranslate] = useState();
-  // const [dummy, setDummy] = useState();
 
-  // useEffect(() => {
-  //   setTextToTranslate([{ Text: JSON.parse(textToTranslate) }]);
-  //   textTranslater(textToTranslate, language).then((result) => {
-  //     const json = JSON.parse(result);
-  //     setTranslatedText(json[0].translations[0].text);
-  //   });
-  // }, [textToTranslate]);
-
-  // useEffect(() => {
-  //   imageToText(photo).then((result) => {
-  //     const json = JSON.parse(result);
-  //     setTextFromPhoto(json.ParsedResults[0].ParsedText);
-  //     return [{ Text: json.ParsedResults[0].ParsedText }];
-  //   });
-  // }, []);
-
-  //create antother use effect with text i wish to translate as the dependancy
   useEffect(() => {
     imageToText(photo)
       .then((result) => {
@@ -80,10 +60,10 @@ export function Translate({ photo }) {
   };
 
   let [fontsLoaded, error] = useFonts({
-    'SF-Pro-Display-Light': require('../assets/fonts/SF-Pro-Display-Light.otf'),
-    'SF-Pro-Display-Medium': require('../assets/fonts/SF-Pro-Display-Medium.otf'),
-    'SF-Pro-Display-Regular': require('../assets/fonts/SF-Pro-Display-Regular.otf'),
-    'SF-Pro-Display-Semibold': require('../assets/fonts/SF-Pro-Display-Semibold.otf'),
+    'SF-Pro-Display-Light': require('../../assets/fonts/SF-Pro-Display-Light.otf'),
+    'SF-Pro-Display-Medium': require('../../assets/fonts/SF-Pro-Display-Medium.otf'),
+    'SF-Pro-Display-Regular': require('../../assets/fonts/SF-Pro-Display-Regular.otf'),
+    'SF-Pro-Display-Semibold': require('../../assets/fonts/SF-Pro-Display-Semibold.otf'),
   });
 
   return (
@@ -112,8 +92,6 @@ export function Translate({ photo }) {
               />
             </View>
           </ScrollView>
-          {/* <View style={styles.pickerContainer}>
-          </View> */}
         </>
       )}
     </SafeAreaView>
@@ -130,13 +108,11 @@ const styles = StyleSheet.create({
   },
   scrollViewContainer: {
     flex: 1,
-    // justifyContent: 'flex-start',
     borderWidth: 1,
     borderColor: 'red',
   },
   pickerContainer: {
     flex: 0.3,
-    // alignSelf: 'flex-start',
   },
   picker: {
     flex: 1,

@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
 import { StyleSheet, TextInput, View, Text } from 'react-native';
 
-import { useFonts } from 'expo-font';
-
 const EditCapturedText = ({
   textFromPhoto,
   setTextToTranslate,
   textToTranslate,
 }) => {
-  let [fontsLoaded, error] = useFonts({
-    'SF-Pro-Display-Light': require('../assets/fonts/SF-Pro-Display-Light.otf'),
-  });
-
   return (
     <View>
       <TextInput

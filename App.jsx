@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import CameraScreen from './screens/CameraScreen';
-import { Translate } from './screens/Translate';
+import { StyleSheet } from 'react-native';
+import CameraScreen from './src/screens/CameraScreen';
+import { SignInScreen } from './src/screens/SignInScreen';
+import { Translate } from './src/screens/Translate';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -11,7 +13,9 @@ function App() {
 
   return (
     <NavigationContainer>
+      {/* <NavigationContainer style={styles.root}> */}
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Login">{() => <SignInScreen />}</Stack.Screen>
         <Stack.Screen name="Capture what you wish to translate">
           {() => <CameraScreen setPhoto={setPhoto} />}
         </Stack.Screen>
@@ -22,5 +26,12 @@ function App() {
     </NavigationContainer>
   );
 }
+
+// const styles = StyleSheet.create({
+//   root: {
+//     flex: 1,
+//     backgroundColor: 'white',
+//   },
+// });
 
 export default App;
