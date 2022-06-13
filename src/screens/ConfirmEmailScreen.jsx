@@ -14,18 +14,25 @@ import {
 import { CustomInput } from '../components/CustomInuput';
 import { CustomButton } from '../components/CustomButton';
 import { SocialSignInButtons } from '../components/SocialSignInButtons';
+import { useNavigation } from '@react-navigation/native';
 
 export const ConfirmEmailScreen = () => {
   const [code, setCode] = useState('');
 
+  const navigation = useNavigation();
+
   const onConfirmPressed = () => {
     console.warn('Register');
+    //validation
+    navigation.navigate('CameraScreen');
   };
   const onSignInPressed = () => {
     console.warn('sign in ');
+    navigation.navigate('SignIn');
   };
   const onResendPressed = () => {
     console.warn('resend');
+    // resend code function
   };
 
   return (

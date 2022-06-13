@@ -3,27 +3,26 @@
 // continue as guest
 
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  useWindowDimensions,
-  ScrollView,
-} from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { CustomInput } from '../components/CustomInuput';
 import { CustomButton } from '../components/CustomButton';
-import { SocialSignInButtons } from '../components/SocialSignInButtons';
+import { useNavigation } from '@react-navigation/native';
 
 export const NewPasswordScreen = () => {
   const [code, setCode] = useState('');
   const [newPassword, setNewPassword] = useState('');
+  const [confirmNewPassword, setConfirmNewPassword] = useState('');
+
+  const navigation = useNavigation();
 
   const onSubmitPressed = () => {
     console.warn('submit');
+    // validation
+    navigation.navigate('CameraScreen');
   };
   const onSignInPressed = () => {
     console.warn('sign in ');
+    navigation.navigate('SignIn');
   };
 
   return (
@@ -35,6 +34,11 @@ export const NewPasswordScreen = () => {
           placeholder="Enter your new password"
           value={newPassword}
           setValue={setNewPassword}
+        />
+        <CustomInput
+          placeholder="Confirm your new password"
+          value={confirmNewPassword}
+          setValue={setConfirmNewPassword}
         />
         <CustomButton text="Submit" onPress={onSubmitPressed} />
         <CustomButton

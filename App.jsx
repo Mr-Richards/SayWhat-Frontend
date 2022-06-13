@@ -32,7 +32,7 @@ function App() {
         <Stack.Screen name="NewPassword">
           {() => <NewPasswordScreen />}
         </Stack.Screen>
-        <Stack.Screen name="Capture what you wish to translate">
+        <Stack.Screen name="CameraScreen">
           {() => <CameraScreen setPhoto={setPhoto} />}
         </Stack.Screen>
         <Stack.Screen screenOptions={{ headerShown: true }} name="Translation">

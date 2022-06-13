@@ -14,6 +14,7 @@ import {
 import { CustomInput } from '../components/CustomInuput';
 import { CustomButton } from '../components/CustomButton';
 import { SocialSignInButtons } from '../components/SocialSignInButtons';
+import { useNavigation } from '@react-navigation/native';
 
 export const SignUpScreen = () => {
   const [username, setUsername] = useState('');
@@ -21,17 +22,25 @@ export const SignUpScreen = () => {
   const [password, setPassword] = useState('');
   const [passwordRepeat, setPasswordRepeat] = useState('');
 
+  const navigation = useNavigation();
+
   const onRegisterPressed = () => {
     console.warn('Register');
-  };
-  const onTermsOfUsePressed = () => {
-    console.warn('ToU');
-  };
-  const onPrivacyPolicyPressed = () => {
-    console.warn('Privacy Policy');
+    navigation.navigate('ConfirmEmail');
   };
   const onSignInPressed = () => {
     console.warn('Sign in');
+    // validate
+    navigation.navigate('SignIn');
+  };
+
+  //Privacy & ToS links need to be implemented.
+  const onPrivacyPolicyPressed = () => {
+    console.warn('Privacy Policy');
+  };
+  const onTermsOfUsePressed = () => {
+    console.warn('ToU');
+    navigation.navigate('CameraScreen');
   };
 
   return (

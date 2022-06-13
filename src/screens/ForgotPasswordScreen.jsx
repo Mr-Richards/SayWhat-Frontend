@@ -3,26 +3,23 @@
 // continue as guest
 
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  useWindowDimensions,
-  ScrollView,
-} from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { CustomInput } from '../components/CustomInuput';
 import { CustomButton } from '../components/CustomButton';
-import { SocialSignInButtons } from '../components/SocialSignInButtons';
+import { useNavigation } from '@react-navigation/native';
 
 export const ForgotPasswordScreen = () => {
   const [username, setUsername] = useState('');
 
+  const navigation = useNavigation();
+
   const onSendPressed = () => {
     console.warn('Register');
+    navigation.navigate('NewPassword');
   };
   const onSignInPressed = () => {
-    console.warn('sign in ');
+    console.warn('sign in');
+    navigation.navigate('SignIn');
   };
 
   return (

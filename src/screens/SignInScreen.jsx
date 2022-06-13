@@ -5,7 +5,6 @@
 import React, { useState } from 'react';
 import {
   View,
-  Text,
   Image,
   StyleSheet,
   useWindowDimensions,
@@ -15,22 +14,31 @@ import Logo from '../../assets/images/translate-app-180.png';
 import { CustomInput } from '../components/CustomInuput';
 import { CustomButton } from '../components/CustomButton';
 import { SocialSignInButtons } from '../components/SocialSignInButtons';
+import { useNavigation } from '@react-navigation/native';
 
 export const SignInScreen = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
   const { height } = useWindowDimensions();
+
+  const navigation = useNavigation();
 
   const onSignInPressed = () => {
     console.warn('SignIn ');
+    // validate user
+
+    navigation.navigate('CameraScreen');
   };
 
   const onForgotPasswordPressed = () => {
     console.warn('Forgot Password');
+    navigation.navigate('ForgotPassword');
   };
 
   const onSignUpPressed = () => {
-    console.warn('Sign Up  ');
+    console.warn('Sign Up');
+    navigation.navigate('SignUp');
   };
 
   return (
