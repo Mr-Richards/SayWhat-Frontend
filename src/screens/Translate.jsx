@@ -14,6 +14,7 @@ import { imageToText } from '../utils/imageToText';
 import { textTranslater } from '../utils/textTranslater';
 import PickerComponent from '../components/LanguagePicker';
 import EditCapturedText from '../components/EditCapturedText';
+import { CustomButton } from '../components/CustomButton';
 
 export function Translate({ photo }) {
   const [textFromPhoto, setTextFromPhoto] = useState();
@@ -85,6 +86,11 @@ export function Translate({ photo }) {
               <TouchableOpacity style={styles.button} onPress={handlePress}>
                 <Text style={styles.buttonText}>Translate</Text>
               </TouchableOpacity>
+              {/* <CustomButton
+                text="Translate"
+                onPress={handlePress}
+                type={'PRIMARY'}
+              /> */}
               <PickerComponent
                 style={styles.picker}
                 setLanguage={setLanguage}

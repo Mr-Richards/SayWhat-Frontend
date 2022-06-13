@@ -42,18 +42,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 5,
-    height: 35,
-    marginVertical: 5,
+    height: 45,
+    marginVertical: 10,
   },
   container_PRIMARY: {
     backgroundColor: 'black',
   },
+  container_SECONDARY: {
+    borderColor: 'black',
+    borderWidth: 2,
+  },
   container_TERTIARY: {},
-
   text: {
     color: 'white',
-    // fontFamily: 'SF-Pro-Display-Semibold',
     fontWeight: 'bold',
+  },
+  text_SECONDARY: {
+    color: 'black',
   },
   text_TERTIARY: {
     color: 'grey',

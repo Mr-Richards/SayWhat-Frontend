@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
-import CameraScreen from './src/screens/CameraScreen';
-import { SignInScreen } from './src/screens/SignInScreen';
-import { Translate } from './src/screens/Translate';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
+import { SignInScreen } from './src/screens/SignInScreen';
+import { SignUpScreen } from './src/screens/SignUpScreen';
+import { ConfirmEmailScreen } from './src/screens/ConfirmEmailScreen';
+import { ForgotPasswordScreen } from './src/screens/ForgotPasswordScreen';
+import { NewPasswordScreen } from './src/screens/NewPasswordScreen';
+import CameraScreen from './src/screens/CameraScreen';
+import { Translate } from './src/screens/Translate';
 
 const Stack = createStackNavigator();
 
@@ -15,7 +21,17 @@ function App() {
     <NavigationContainer>
       {/* <NavigationContainer style={styles.root}> */}
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Login">{() => <SignInScreen />}</Stack.Screen>
+        <Stack.Screen name="SignIn">{() => <SignInScreen />}</Stack.Screen>
+        <Stack.Screen name="SignUp">{() => <SignUpScreen />}</Stack.Screen>
+        <Stack.Screen name="ConfirmEmail">
+          {() => <ConfirmEmailScreen />}
+        </Stack.Screen>
+        <Stack.Screen name="ForgotPassword">
+          {() => <ForgotPasswordScreen />}
+        </Stack.Screen>
+        <Stack.Screen name="NewPassword">
+          {() => <NewPasswordScreen />}
+        </Stack.Screen>
         <Stack.Screen name="Capture what you wish to translate">
           {() => <CameraScreen setPhoto={setPhoto} />}
         </Stack.Screen>

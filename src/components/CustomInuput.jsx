@@ -23,7 +23,7 @@ export const CustomInput = ({
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: 35,
+    height: 45,
     borderWidth: 1,
     borderRadius: 5,
     borderColor: '#e8e8e8',

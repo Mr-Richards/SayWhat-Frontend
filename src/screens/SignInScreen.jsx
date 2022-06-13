@@ -14,6 +14,7 @@ import {
 import Logo from '../../assets/images/translate-app-180.png';
 import { CustomInput } from '../components/CustomInuput';
 import { CustomButton } from '../components/CustomButton';
+import { SocialSignInButtons } from '../components/SocialSignInButtons';
 
 export const SignInScreen = () => {
   const [username, setUsername] = useState('');
@@ -28,17 +29,6 @@ export const SignInScreen = () => {
     console.warn('Forgot Password');
   };
 
-  const onSignInApple = () => {
-    console.warn('SignIn a ');
-  };
-
-  const onSignInGoogle = () => {
-    console.warn('SignIn g ');
-  };
-
-  const onSignInFacebook = () => {
-    console.warn('SignIn f ');
-  };
   const onSignUpPressed = () => {
     console.warn('Sign Up  ');
   };
@@ -72,23 +62,7 @@ export const SignInScreen = () => {
           onPress={onForgotPasswordPressed}
           type="TERTIARY"
         />
-        <CustomButton
-          text="Sign In with Apple"
-          onPress={onSignInApple}
-          type={'PRIMARY'}
-        />
-        <CustomButton
-          text="Sign In with Google"
-          onPress={onSignInGoogle}
-          bgColor="#FAE9EA"
-          fgColor="#DD4D44"
-        />
-        <CustomButton
-          text="Sign In with Facebook"
-          onPress={onSignInFacebook}
-          bgColor="#E7EAF4"
-          fgColor="#363636"
-        />
+        <SocialSignInButtons />
         <CustomButton
           text="Don't have an accout? Create one."
           onPress={onSignUpPressed}
@@ -107,7 +81,6 @@ const styles = StyleSheet.create({
     paddingTop: 80,
     paddingLeft: 55,
     paddingRight: 55,
-    // margin: 40,
     backgroundColor: 'white',
   },
   logo: {
@@ -116,5 +89,3 @@ const styles = StyleSheet.create({
     maxHeight: 150,
   },
 });
-
-export default SignInScreen;
