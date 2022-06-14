@@ -1,7 +1,3 @@
-// login
-// sign up
-// continue as guest
-
 import React, { useState } from 'react';
 import {
   View,

@@ -10,12 +10,11 @@ import {
 } from 'react-native';
 import { Auth } from 'aws-amplify';
 
-import { useFonts } from 'expo-font';
-
 import { imageToText } from '../utils/imageToText';
 import { textTranslater } from '../utils/textTranslater';
 import PickerComponent from '../components/LanguagePicker';
 import EditCapturedText from '../components/EditCapturedText';
+import { useNavigation } from '@react-navigation/native';
 
 export function Translate({ photo, setUser, user }) {
   const [textFromPhoto, setTextFromPhoto] = useState();
@@ -64,7 +63,12 @@ export function Translate({ photo, setUser, user }) {
   const signOut = () => {
     Auth.signOut();
     setUser(false);
-    // navigation.navigate('CameraScreen');
+  };
+
+  const navigation = useNavigation();
+
+  const prevTrans = () => {
+    navigation.navigate('PreviousTranslations');
   };
 
   return (
@@ -76,25 +80,36 @@ export function Translate({ photo, setUser, user }) {
           <>
             <ScrollView style={styles.scrollViewContainer}>
               <View>
-                {user === 'guest' ? null : (
-                  <Text
-                    onPress={signOut}
-                    style={{
-                      // width: '100%',
-                      textAlign: 'right',
-                      color: 'red',
-                      // marginTop: 'auto',
-                      marginVertical: 10,
-                      fontSize: 20,
-                    }}
-                  >
-                    Sign Out
-                  </Text>
-                )}
-                <Text style={styles.text}>
-                  Text from photo: {textFromPhoto}{' '}
-                </Text>
-                <Text style={styles.text}>Translation: {translatedText} </Text>
+                <View style={styles.userPrivalages}>
+                  {user === 'guest' ? null : (
+                    <Text
+                      onPress={prevTrans}
+                      style={{
+                        color: 'red',
+                        marginVertical: 10,
+                        fontSize: 20,
+                      }}
+                    >
+                      Translations
+                    </Text>
+                  )}
+                  {user === 'guest' ? null : (
+                    <Text
+                      onPress={signOut}
+                      style={{
+                        color: 'red',
+                        marginVertical: 10,
+                        fontSize: 20,
+                      }}
+                    >
+                      Sign Out
+                    </Text>
+                  )}
+                </View>
+                <Text style={styles.textHeadings}>Text from photo:</Text>
+                <Text style={styles.textFromAPIs}>{textFromPhoto}</Text>
+                <Text style={styles.textHeadings}>Translation:</Text>
+                <Text style={styles.textFromAPIs}>{translatedText}</Text>
                 <Text style={styles.editHeading}>Edit:</Text>
                 <EditCapturedText
                   textFromPhoto={textFromPhoto}
@@ -104,11 +119,13 @@ export function Translate({ photo, setUser, user }) {
                 <TouchableOpacity style={styles.button} onPress={handlePress}>
                   <Text style={styles.buttonText}>Translate</Text>
                 </TouchableOpacity>
-                <PickerComponent
-                  style={styles.picker}
-                  setLanguage={setLanguage}
-                  language={language}
-                />
+                <View style={styles.pickerContainer}>
+                  <PickerComponent
+                    style={styles.picker}
+                    setLanguage={setLanguage}
+                    language={language}
+                  />
+                </View>
               </View>
             </ScrollView>
           </>
@@ -123,30 +140,27 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: 'flex-end',
     margin: 10,
-    borderWidth: 1,
-    borderColor: 'red',
     // backgroundColor: 'black',
   },
   scrollViewContainer: {
     flex: 1,
-    borderWidth: 1,
-    borderColor: 'red',
+  },
+  userPrivalages: {
+    paddingHorizontal: 7,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   pickerContainer: {
-    flex: 0.3,
-    zIndex: 1,
+    // flex: 1,
+    // justifyContent: 'flex-end',
+    // alignContent: 'flex-end',
+    // borderWidth: 1,
+    // borderColor: 'red',
   },
-  picker: {
-    flex: 1,
-    height: '30%',
-    borderWidth: 1,
-    borderColor: 'red',
-    marginLeft: 10,
-    marginRight: 10,
-  },
+  picker: {},
   button: {
     height: 45,
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: 'black',
     borderRadius: 5,
     justifyContent: 'center',
@@ -160,17 +174,18 @@ const styles = StyleSheet.create({
     height: 45,
     fontSize: 20,
     fontWeight: '500',
-
-    // fontFamily: 'SF-Pro-Display-Regular',
   },
   editHeading: {
-    marginLeft: 10,
+    marginLeft: 12,
+    margin: 5,
   },
-  text: {
+
+  textHeadings: {
+    fontSize: 18,
+    marginHorizontal: 10,
+  },
+  textFromAPIs: {
     fontSize: 28,
-    marginLeft: 10,
-    marginRight: 10,
-    // fontFamily: 'SF-Pro-Display-Light',
-    // color: 'white',
+    marginHorizontal: 10,
   },
 });

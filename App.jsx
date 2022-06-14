@@ -11,6 +11,7 @@ import { ForgotPasswordScreen } from './src/screens/ForgotPasswordScreen';
 import { NewPasswordScreen } from './src/screens/NewPasswordScreen';
 import CameraScreen from './src/screens/CameraScreen';
 import { Translate } from './src/screens/Translate';
+import { PreviousTranslations } from './src/screens/PreviousTranslations';
 
 import Amplify, { Auth, Hub } from 'aws-amplify';
 import awsconfig from './src/aws-exports';
@@ -48,38 +49,6 @@ const App = () => {
     return () => Hub.remove('auth', listener);
   }, []);
 
-  // if (user === undefined) {
-  //   return (
-  //     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-  //       <ActivityIndicator />
-  //     </View>
-  //   );
-  // }
-  // return (
-  //   <NavigationContainer>
-  //     {/* <NavigationContainer style={styles.root}> */}
-  //     <Stack.Navigator screenOptions={{ headerShown: false }}>
-  //       <Stack.Screen name="SignIn">{() => <SignInScreen />}</Stack.Screen>
-  //       <Stack.Screen name="SignUp">{() => <SignUpScreen />}</Stack.Screen>
-  //       <Stack.Screen name="ConfirmEmail">
-  //         {() => <ConfirmEmailScreen />}
-  //       </Stack.Screen>
-  //       <Stack.Screen name="ForgotPassword">
-  //         {() => <ForgotPasswordScreen />}
-  //       </Stack.Screen>
-  //       <Stack.Screen name="NewPassword">
-  //         {() => <NewPasswordScreen />}
-  //       </Stack.Screen>
-  //       <Stack.Screen name="CameraScreen">
-  //         {() => <CameraScreen setPhoto={setPhoto} />}
-  //       </Stack.Screen>
-  //       <Stack.Screen screenOptions={{ headerShown: true }} name="Translation">
-  //         {() => <Translate photo={photo} />}
-  //       </Stack.Screen>
-  //     </Stack.Navigator>
-  //   </NavigationContainer>
-  // );
-
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -93,6 +62,9 @@ const App = () => {
               name="Translation"
             >
               {() => <Translate photo={photo} setUser={setUser} user={user} />}
+            </Stack.Screen>
+            <Stack.Screen name="PreviousTranslations">
+              {() => <PreviousTranslations />}
             </Stack.Screen>
           </>
         ) : (
