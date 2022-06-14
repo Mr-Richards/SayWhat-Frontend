@@ -2,37 +2,44 @@
 // sign up
 // continue as guest
 
-import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  useWindowDimensions,
-  ScrollView,
-} from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, ScrollView, Alert } from 'react-native';
 import { CustomInput } from '../components/CustomInuput';
 import { CustomButton } from '../components/CustomButton';
-import { SocialSignInButtons } from '../components/SocialSignInButtons';
 import { useNavigation } from '@react-navigation/native';
+import { useForm } from 'react-hook-form';
+import { useRoute } from '@react-navigation/native';
+import { Auth } from 'aws-amplify';
 
 export const ConfirmEmailScreen = () => {
-  const [code, setCode] = useState('');
+  const route = useRoute();
+  const { control, handleSubmit, watch } = useForm({
+    defaultValues: { username: route?.params?.username },
+  });
+
+  const username = watch('username');
 
   const navigation = useNavigation();
 
-  const onConfirmPressed = () => {
-    console.warn('Register');
-    //validation
-    navigation.navigate('CameraScreen');
+  const onConfirmPressed = async (data) => {
+    try {
+      await Auth.confirmSignUp(data.username, data.code);
+      navigation.navigate('SignIn');
+    } catch (error) {
+      Alert.alert('Oops', error.message);
+    }
   };
   const onSignInPressed = () => {
-    console.warn('sign in ');
     navigation.navigate('SignIn');
   };
-  const onResendPressed = () => {
-    console.warn('resend');
-    // resend code function
+
+  const onResendPressed = async () => {
+    try {
+      await Auth.resendSignUp(username);
+      Alert.alert('Code resesnt to your email');
+    } catch (error) {
+      Alert.alert('Oops', error.message);
+    }
   };
 
   return (
@@ -40,11 +47,18 @@ export const ConfirmEmailScreen = () => {
       <View style={styles.root}>
         <Text style={styles.title}>Confirm your email</Text>
         <CustomInput
-          placeholder="Enter your confirmation code"
-          value={code}
-          setValue={setCode}
+          placeholder="Enter your username"
+          name="username"
+          control={control}
+          rules={{ required: 'Username is required' }}
         />
-        <CustomButton text="Confirm" onPress={onConfirmPressed} />
+        <CustomInput
+          placeholder="Enter your confirmation code"
+          name="code"
+          control={control}
+          rules={{ required: 'Confirmation code required' }}
+        />
+        <CustomButton text="Confirm" onPress={handleSubmit(onConfirmPressed)} />
 
         <CustomButton
           text="Resend code"

@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-soloauth-staging-102443-authRole",
+      "UnauthRoleArn": "arn:aws:iam::119320729986:role/amplify-soloauth-staging-102443-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::119320729986:role/amplify-soloauth-staging-102443-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-soloauth-staging-102443-deployment",
+      "UnauthRoleName": "amplify-soloauth-staging-102443-unauthRole",
+      "StackName": "amplify-soloauth-staging-102443",
+      "StackId": "arn:aws:cloudformation:us-east-1:119320729986:stack/amplify-soloauth-staging-102443/354b5d30-ebcc-11ec-be99-0a6ef8fd749b",
+      "AmplifyAppId": "dfhz1hzt77by0"
+    },
+    "categories": {
+      "auth": {
+        "soloAuth": {}
+      }
+    }
+  }
+}

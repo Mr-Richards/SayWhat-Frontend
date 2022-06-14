@@ -68,39 +68,38 @@ export function Translate({ photo }) {
   });
 
   return (
-    <SafeAreaView style={styles.safeViewContainer}>
-      {!translatedText.length ? (
-        <Text>Loading...</Text>
-      ) : (
-        <>
-          <ScrollView style={styles.scrollViewContainer}>
-            <View>
-              <Text style={styles.text}>Text from photo: {textFromPhoto} </Text>
-              <Text style={styles.text}>Translation: {translatedText} </Text>
-              <Text style={styles.editHeading}>Edit:</Text>
-              <EditCapturedText
-                textFromPhoto={textFromPhoto}
-                textToTranslate={textToTranslate}
-                setTextToTranslate={setTextToTranslate}
-              />
-              <TouchableOpacity style={styles.button} onPress={handlePress}>
-                <Text style={styles.buttonText}>Translate</Text>
-              </TouchableOpacity>
-              {/* <CustomButton
-                text="Translate"
-                onPress={handlePress}
-                type={'PRIMARY'}
-              /> */}
-              <PickerComponent
-                style={styles.picker}
-                setLanguage={setLanguage}
-                language={language}
-              />
-            </View>
-          </ScrollView>
-        </>
-      )}
-    </SafeAreaView>
+    <View style={[{ backgroundColor: 'white' }, { flex: 1 }]}>
+      <SafeAreaView style={styles.safeViewContainer}>
+        {!translatedText.length ? (
+          <Text>Loading...</Text>
+        ) : (
+          <>
+            <ScrollView style={styles.scrollViewContainer}>
+              <View>
+                <Text style={styles.text}>
+                  Text from photo: {textFromPhoto}{' '}
+                </Text>
+                <Text style={styles.text}>Translation: {translatedText} </Text>
+                <Text style={styles.editHeading}>Edit:</Text>
+                <EditCapturedText
+                  textFromPhoto={textFromPhoto}
+                  textToTranslate={textToTranslate}
+                  setTextToTranslate={setTextToTranslate}
+                />
+                <TouchableOpacity style={styles.button} onPress={handlePress}>
+                  <Text style={styles.buttonText}>Translate</Text>
+                </TouchableOpacity>
+                <PickerComponent
+                  style={styles.picker}
+                  setLanguage={setLanguage}
+                  language={language}
+                />
+              </View>
+            </ScrollView>
+          </>
+        )}
+      </SafeAreaView>
+    </View>
   );
 }
 const styles = StyleSheet.create({
@@ -111,6 +110,7 @@ const styles = StyleSheet.create({
     margin: 10,
     borderWidth: 1,
     borderColor: 'red',
+    // backgroundColor: 'black',
   },
   scrollViewContainer: {
     flex: 1,
@@ -119,6 +119,7 @@ const styles = StyleSheet.create({
   },
   pickerContainer: {
     flex: 0.3,
+    zIndex: 1,
   },
   picker: {
     flex: 1,
@@ -129,17 +130,22 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   button: {
-    height: 35,
+    height: 45,
     borderWidth: 1,
-    borderColor: 'lightgrey',
+    borderColor: 'black',
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: 10,
-    marginRight: 10,
+    marginHorizontal: 10,
   },
   buttonText: {
-    fontSize: 24,
+    marginTop: 20,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    height: 45,
+    fontSize: 20,
+    fontWeight: '500',
+
     // fontFamily: 'SF-Pro-Display-Regular',
   },
   editHeading: {
@@ -150,5 +156,6 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     // fontFamily: 'SF-Pro-Display-Light',
+    // color: 'white',
   },
 });

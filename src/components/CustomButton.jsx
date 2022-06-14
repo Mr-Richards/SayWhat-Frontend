@@ -32,30 +32,30 @@ export const CustomButton = ({
   );
 };
 
-// let [fontsLoaded, error] = useFonts({
-//   'SF-Pro-Display-Semibold': require('../../assets/fonts/SF-Pro-Display-Semibold.otf'),
-// });
-
 const styles = StyleSheet.create({
   container: {
     width: '100%',
     alignItems: 'center',
+    alignSelf: 'center',
     justifyContent: 'center',
     borderRadius: 5,
     height: 45,
-    marginVertical: 10,
+    marginVertical: 8,
   },
   container_PRIMARY: {
     backgroundColor: 'black',
+    marginHorizontal: 10,
   },
   container_SECONDARY: {
     borderColor: 'black',
     borderWidth: 2,
+    marginHorizontal: 10,
   },
   container_TERTIARY: {},
   text: {
     color: 'white',
     fontWeight: 'bold',
+    fontSize: 17,
   },
   text_SECONDARY: {
     color: 'black',

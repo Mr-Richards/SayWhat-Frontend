@@ -9,36 +9,56 @@ import {
   StyleSheet,
   useWindowDimensions,
   ScrollView,
+  Alert,
 } from 'react-native';
 import Logo from '../../assets/images/translate-app-180.png';
 import { CustomInput } from '../components/CustomInuput';
 import { CustomButton } from '../components/CustomButton';
 import { SocialSignInButtons } from '../components/SocialSignInButtons';
 import { useNavigation } from '@react-navigation/native';
+import { useForm } from 'react-hook-form';
+import { Auth } from 'aws-amplify';
 
 export const SignInScreen = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-
   const { height } = useWindowDimensions();
-
   const navigation = useNavigation();
+  const [loading, setLoading] = useState(false);
 
-  const onSignInPressed = () => {
-    console.warn('SignIn ');
-    // validate user
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-    navigation.navigate('CameraScreen');
+  const onSignInPressed = async (data) => {
+    if (loading) {
+      return;
+    }
+    setLoading(true);
+    try {
+      const response = await Auth.signIn(data.username, data.password);
+      console.log(response);
+    } catch (error) {
+      Alert.alert('Oops', error.message);
+    }
+    setLoading(false);
+    // console.warn('SignIn ');
+    // // validate user
+
+    // navigation.navigate('CameraScreen');
   };
 
   const onForgotPasswordPressed = () => {
     console.warn('Forgot Password');
     navigation.navigate('ForgotPassword');
   };
-
   const onSignUpPressed = () => {
     console.warn('Sign Up');
     navigation.navigate('SignUp');
+  };
+  const onGuestPressed = () => {
+    console.warn('Guest');
+    navigation.navigate('CameraScreen');
   };
 
   return (
@@ -48,21 +68,25 @@ export const SignInScreen = () => {
           source={Logo}
           style={[styles.logo, { height: height * 0.3 }]}
           resizeMode="contain"
-        ></Image>
-        <CustomInput
-          placeholder="Username"
-          value={username}
-          setValue={setUsername}
         />
         <CustomInput
+          name="username"
+          placeholder="Username"
+          control={control}
+          rules={{ required: 'Username is required' }}
+        />
+        <CustomInput
+          name="password"
           placeholder="Password"
-          value={password}
-          setValue={setPassword}
           secureTextEntry={true}
+          control={control}
+          rules={{
+            required: 'Password is required',
+          }}
         />
         <CustomButton
-          text="Sign In"
-          onPress={onSignInPressed}
+          text={loading ? 'Loading...' : 'Sign In'}
+          onPress={handleSubmit(onSignInPressed)}
           type={'PRIMARY'}
         />
         <CustomButton
@@ -76,6 +100,7 @@ export const SignInScreen = () => {
           onPress={onSignUpPressed}
           type="TERTIARY"
         />
+        <CustomButton text="Guest" onPress={onGuestPressed} type="TERTIARY" />
       </View>
     </ScrollView>
   );
@@ -87,8 +112,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'top',
     paddingTop: 80,
-    paddingLeft: 55,
-    paddingRight: 55,
+    paddingHorizontal: 35,
     backgroundColor: 'white',
   },
   logo: {
