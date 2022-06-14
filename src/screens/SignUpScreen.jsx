@@ -34,6 +34,9 @@ export const SignUpScreen = () => {
       Alert.alert('Oops', error.message);
     }
   };
+  const onSignInPressed = () => {
+    navigation.navigate('SignIn');
+  };
 
   //Privacy & ToS links need to be implemented.
   const onPrivacyPolicyPressed = () => {
@@ -155,8 +158,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'top',
     paddingTop: 80,
-    paddingLeft: 55,
-    paddingRight: 55,
+    paddingHorizontal: 35,
     backgroundColor: 'white',
   },
   title: {

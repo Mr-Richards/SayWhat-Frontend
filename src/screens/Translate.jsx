@@ -83,7 +83,7 @@ export function Translate({ photo, setUser, user, userId }) {
     <View style={[{ backgroundColor: 'white' }, { flex: 1 }]}>
       <SafeAreaView style={styles.safeViewContainer}>
         {!translatedText.length ? (
-          <ActivityIndicator />
+          <ActivityIndicator style={{ flex: 1 }} />
         ) : (
           <>
             <ScrollView style={styles.scrollViewContainer}>

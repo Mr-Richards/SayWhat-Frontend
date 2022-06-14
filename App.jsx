@@ -1,5 +1,4 @@
 import React, { useState, useEffect, View } from 'react';
-import { ActivityIndicator } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -56,7 +55,13 @@ const App = () => {
         {user ? (
           <>
             <Stack.Screen name="CameraScreen">
-              {() => <CameraScreen setUser={setUser} setPhoto={setPhoto} />}
+              {() => (
+                <CameraScreen
+                  user={user}
+                  setUser={setUser}
+                  setPhoto={setPhoto}
+                />
+              )}
             </Stack.Screen>
             <Stack.Screen
               screenOptions={{ headerShown: true }}
