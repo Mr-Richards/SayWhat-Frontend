@@ -14,8 +14,9 @@ import { SocialSignInButtons } from '../components/SocialSignInButtons';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import { Auth } from 'aws-amplify';
+import { createUser } from '../services/userServices';
 
-export const SignInScreen = ({ setUser }) => {
+export const SignInScreen = ({ setUser, setUserId }) => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
@@ -32,8 +33,15 @@ export const SignInScreen = ({ setUser }) => {
     }
     setLoading(true);
     try {
+      console.log(data, 'dataaaaaaaaaaaaaaa');
       const response = await Auth.signIn(data.username, data.password);
-      console.log(response);
+      setUserId(response.attributes.sub);
+      const userResponse = await createUser({
+        username: response.username,
+        id: response.attributes.sub,
+      });
+      console.log(userResponse, 'userResponse');
+      console.log(response, 'response');
     } catch (error) {
       Alert.alert('Oops', error.message);
     }

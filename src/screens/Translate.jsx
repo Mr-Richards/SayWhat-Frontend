@@ -15,8 +15,9 @@ import { textTranslater } from '../utils/textTranslater';
 import PickerComponent from '../components/LanguagePicker';
 import EditCapturedText from '../components/EditCapturedText';
 import { useNavigation } from '@react-navigation/native';
+import { postTranslation } from '../services/translationServices';
 
-export function Translate({ photo, setUser, user }) {
+export function Translate({ photo, setUser, user, userId }) {
   const [textFromPhoto, setTextFromPhoto] = useState();
   const [translatedText, setTranslatedText] = useState('');
   const [language, setLanguage] = useState('es');
@@ -47,13 +48,20 @@ export function Translate({ photo, setUser, user }) {
       });
   }, []);
 
-  const handlePress = () => {
+  const handlePress = async () => {
     const text = [{ Text: textToTranslate }];
     textTranslater(text, language)
       .then((result) => {
+        console.log(textToTranslate, 'ttetetetettextextetd');
         console.log(result, 'translated result ');
         const json = JSON.parse(result);
         setTranslatedText(json[0].translations[0].text);
+        const response = postTranslation({
+          original: textToTranslate,
+          translated: json[0].translations[0].text,
+          userid: userId,
+        });
+        console.log(response, 'post translation response');
       })
       .catch((error) => {
         console.log(error, 'text translation error');
@@ -68,7 +76,7 @@ export function Translate({ photo, setUser, user }) {
   const navigation = useNavigation();
 
   const prevTrans = () => {
-    navigation.navigate('PreviousTranslations');
+    navigation.navigate('PreviousTranslations', userId);
   };
 
   return (
@@ -161,11 +169,12 @@ const styles = StyleSheet.create({
   button: {
     height: 45,
     borderWidth: 2,
-    borderColor: 'black',
+    borderColor: 'white',
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 10,
+    backgroundColor: 'black',
   },
   buttonText: {
     marginTop: 20,
@@ -174,6 +183,7 @@ const styles = StyleSheet.create({
     height: 45,
     fontSize: 20,
     fontWeight: '500',
+    color: 'white',
   },
   editHeading: {
     marginLeft: 12,

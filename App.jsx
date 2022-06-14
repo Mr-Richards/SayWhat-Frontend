@@ -23,6 +23,7 @@ const Stack = createStackNavigator();
 const App = () => {
   const [photo, setPhoto] = useState();
   const [user, setUser] = useState(undefined);
+  const [userId, setUserId] = useState(undefined);
 
   const checkUser = async () => {
     try {
@@ -61,7 +62,14 @@ const App = () => {
               screenOptions={{ headerShown: true }}
               name="Translation"
             >
-              {() => <Translate photo={photo} setUser={setUser} user={user} />}
+              {() => (
+                <Translate
+                  photo={photo}
+                  userId={userId}
+                  setUser={setUser}
+                  user={user}
+                />
+              )}
             </Stack.Screen>
             <Stack.Screen name="PreviousTranslations">
               {() => <PreviousTranslations />}
@@ -70,7 +78,7 @@ const App = () => {
         ) : (
           <>
             <Stack.Screen name="SignIn">
-              {() => <SignInScreen setUser={setUser} />}
+              {() => <SignInScreen setUserId={setUserId} setUser={setUser} />}
             </Stack.Screen>
             <Stack.Screen name="SignUp">{() => <SignUpScreen />}</Stack.Screen>
             <Stack.Screen name="ConfirmEmail">
