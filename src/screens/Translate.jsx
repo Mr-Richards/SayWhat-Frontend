@@ -6,7 +6,9 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
+  ActivityIndicator,
 } from 'react-native';
+import { Auth } from 'aws-amplify';
 
 import { useFonts } from 'expo-font';
 
@@ -14,9 +16,8 @@ import { imageToText } from '../utils/imageToText';
 import { textTranslater } from '../utils/textTranslater';
 import PickerComponent from '../components/LanguagePicker';
 import EditCapturedText from '../components/EditCapturedText';
-import { CustomButton } from '../components/CustomButton';
 
-export function Translate({ photo }) {
+export function Translate({ photo, setUser, user }) {
   const [textFromPhoto, setTextFromPhoto] = useState();
   const [translatedText, setTranslatedText] = useState('');
   const [language, setLanguage] = useState('es');
@@ -60,22 +61,36 @@ export function Translate({ photo }) {
       });
   };
 
-  let [fontsLoaded, error] = useFonts({
-    'SF-Pro-Display-Light': require('../../assets/fonts/SF-Pro-Display-Light.otf'),
-    'SF-Pro-Display-Medium': require('../../assets/fonts/SF-Pro-Display-Medium.otf'),
-    'SF-Pro-Display-Regular': require('../../assets/fonts/SF-Pro-Display-Regular.otf'),
-    'SF-Pro-Display-Semibold': require('../../assets/fonts/SF-Pro-Display-Semibold.otf'),
-  });
+  const signOut = () => {
+    Auth.signOut();
+    setUser(false);
+    // navigation.navigate('CameraScreen');
+  };
 
   return (
     <View style={[{ backgroundColor: 'white' }, { flex: 1 }]}>
       <SafeAreaView style={styles.safeViewContainer}>
         {!translatedText.length ? (
-          <Text>Loading...</Text>
+          <ActivityIndicator />
         ) : (
           <>
             <ScrollView style={styles.scrollViewContainer}>
               <View>
+                {user === 'guest' ? null : (
+                  <Text
+                    onPress={signOut}
+                    style={{
+                      // width: '100%',
+                      textAlign: 'right',
+                      color: 'red',
+                      // marginTop: 'auto',
+                      marginVertical: 10,
+                      fontSize: 20,
+                    }}
+                  >
+                    Sign Out
+                  </Text>
+                )}
                 <Text style={styles.text}>
                   Text from photo: {textFromPhoto}{' '}
                 </Text>

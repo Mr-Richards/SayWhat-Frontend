@@ -86,18 +86,20 @@ const App = () => {
         {user ? (
           <>
             <Stack.Screen name="CameraScreen">
-              {() => <CameraScreen setPhoto={setPhoto} />}
+              {() => <CameraScreen setUser={setUser} setPhoto={setPhoto} />}
             </Stack.Screen>
             <Stack.Screen
               screenOptions={{ headerShown: true }}
               name="Translation"
             >
-              {() => <Translate photo={photo} />}
+              {() => <Translate photo={photo} setUser={setUser} user={user} />}
             </Stack.Screen>
           </>
         ) : (
           <>
-            <Stack.Screen name="SignIn">{() => <SignInScreen />}</Stack.Screen>
+            <Stack.Screen name="SignIn">
+              {() => <SignInScreen setUser={setUser} />}
+            </Stack.Screen>
             <Stack.Screen name="SignUp">{() => <SignUpScreen />}</Stack.Screen>
             <Stack.Screen name="ConfirmEmail">
               {() => <ConfirmEmailScreen />}

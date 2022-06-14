@@ -39,19 +39,12 @@ export const SignUpScreen = () => {
     }
   };
 
-  const onSignInPressed = async (data) => {
-    // console.warn('Sign in');
-    // // validate
-    // navigation.navigate('SignIn');
-  };
-
   //Privacy & ToS links need to be implemented.
   const onPrivacyPolicyPressed = () => {
     console.warn('Privacy Policy');
   };
   const onTermsOfUsePressed = () => {
     console.warn('ToU');
-    navigation.navigate('CameraScreen');
   };
 
   return (
@@ -104,7 +97,7 @@ export const SignUpScreen = () => {
           control={control}
           placeholder="Repeat email"
           rules={{
-            required: 'Email is required',
+            required: '',
             pattern: { value: EMAIL_REGEX, message: 'Email is invaild' },
             validate: (value) => value === eml || 'Email does not match',
           }}
@@ -128,6 +121,7 @@ export const SignUpScreen = () => {
           placeholder="Repeat password"
           secureTextEntry
           rules={{
+            required: '',
             validate: (value) => value === pwd || 'Password does not match',
           }}
         />

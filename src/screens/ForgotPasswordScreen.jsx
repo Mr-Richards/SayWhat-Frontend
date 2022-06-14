@@ -20,7 +20,6 @@ export const ForgotPasswordScreen = () => {
   };
 
   const onSignInPressed = () => {
-    console.warn('sign in');
     navigation.navigate('SignIn');
   };
 

@@ -19,7 +19,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import { Auth } from 'aws-amplify';
 
-export const SignInScreen = () => {
+export const SignInScreen = ({ setUser }) => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
@@ -42,22 +42,16 @@ export const SignInScreen = () => {
       Alert.alert('Oops', error.message);
     }
     setLoading(false);
-    // console.warn('SignIn ');
-    // // validate user
-
-    // navigation.navigate('CameraScreen');
   };
 
   const onForgotPasswordPressed = () => {
-    console.warn('Forgot Password');
     navigation.navigate('ForgotPassword');
   };
   const onSignUpPressed = () => {
-    console.warn('Sign Up');
     navigation.navigate('SignUp');
   };
   const onGuestPressed = () => {
-    console.warn('Guest');
+    setUser('guest');
     navigation.navigate('CameraScreen');
   };
 
