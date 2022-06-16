@@ -4,7 +4,6 @@ export const imageToText = (capturedPhoto) => {
 
   const myHeaders = new Headers();
   const API_KEY = process.env.FREE_OCR_API_KEY_2 + '';
-  console.log(API_KEY);
 
   myHeaders.append('apikey', API_KEY);
 
