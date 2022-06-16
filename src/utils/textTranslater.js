@@ -1,5 +1,6 @@
 export const textTranslater = (text, language) => {
   const API_KEY = process.env.RAPID_API_KEY + '';
+  console.log(API_KEY);
 
   const options = {
     method: 'POST',
