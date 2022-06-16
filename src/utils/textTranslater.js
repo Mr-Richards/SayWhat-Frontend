@@ -1,9 +1,11 @@
 export const textTranslater = (text, language) => {
+  const API_KEY = process.env.RAPID_API_KEY + '';
+
   const options = {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
-      'X-RapidAPI-Key': '24a4c869d8mshd3fb790cde740c9p16d903jsndc5d572472f9',
+      'X-RapidAPI-Key': API_KEY,
       'X-RapidAPI-Host': 'microsoft-translator-text.p.rapidapi.com',
     },
     body: JSON.stringify(text),

@@ -82,62 +82,62 @@ export function Translate({ photo, setUser, user, userId }) {
   return (
     <View style={[{ backgroundColor: 'white' }, { flex: 1 }]}>
       <SafeAreaView style={styles.safeViewContainer}>
-        {!translatedText.length ? (
+        {/* {!translatedText.length ? (
           <ActivityIndicator style={{ flex: 1 }} />
-        ) : (
-          <>
-            <ScrollView style={styles.scrollViewContainer}>
-              <View>
-                <View style={styles.userPrivalages}>
-                  {user === 'guest' ? null : (
-                    <Text
-                      onPress={prevTrans}
-                      style={{
-                        color: 'red',
-                        marginVertical: 10,
-                        fontSize: 20,
-                      }}
-                    >
-                      Translations
-                    </Text>
-                  )}
-                  {user === 'guest' ? null : (
-                    <Text
-                      onPress={signOut}
-                      style={{
-                        color: 'red',
-                        marginVertical: 10,
-                        fontSize: 20,
-                      }}
-                    >
-                      Sign Out
-                    </Text>
-                  )}
-                </View>
-                <Text style={styles.textHeadings}>Text from photo:</Text>
-                <Text style={styles.textFromAPIs}>{textFromPhoto}</Text>
-                <Text style={styles.textHeadings}>Translation:</Text>
-                <Text style={styles.textFromAPIs}>{translatedText}</Text>
-                <Text style={styles.editHeading}>Edit:</Text>
-                <EditCapturedText
-                  textFromPhoto={textFromPhoto}
-                  textToTranslate={textToTranslate}
-                  setTextToTranslate={setTextToTranslate}
-                />
-                <TouchableOpacity style={styles.button} onPress={handlePress}>
-                  <Text style={styles.buttonText}>Translate</Text>
-                </TouchableOpacity>
-                <View style={styles.pickerContainer}>
-                  <PickerComponent
-                    style={styles.picker}
-                    setLanguage={setLanguage}
-                    language={language}
-                  />
-                </View>
+        ) : ( */}
+        <>
+          <ScrollView style={styles.scrollViewContainer}>
+            <View>
+              <View style={styles.userPrivalages}>
+                {user === 'guest' ? null : (
+                  <Text
+                    onPress={prevTrans}
+                    style={{
+                      color: 'red',
+                      marginVertical: 10,
+                      fontSize: 20,
+                    }}
+                  >
+                    Translations
+                  </Text>
+                )}
+                {user === 'guest' ? null : (
+                  <Text
+                    onPress={signOut}
+                    style={{
+                      color: 'red',
+                      marginVertical: 10,
+                      fontSize: 20,
+                    }}
+                  >
+                    Sign Out
+                  </Text>
+                )}
               </View>
-            </ScrollView>
-          </>
-        )}
+              <Text style={styles.textHeadings}>Text from photo:</Text>
+              <Text style={styles.textFromAPIs}>{textFromPhoto}</Text>
+              <Text style={styles.textHeadings}>Translation:</Text>
+              <Text style={styles.textFromAPIs}>{translatedText}</Text>
+              <Text style={styles.editHeading}>Edit:</Text>
+              <EditCapturedText
+                textFromPhoto={textFromPhoto}
+                textToTranslate={textToTranslate}
+                setTextToTranslate={setTextToTranslate}
+              />
+              <TouchableOpacity style={styles.button} onPress={handlePress}>
+                <Text style={styles.buttonText}>Translate</Text>
+              </TouchableOpacity>
+              <View style={styles.pickerContainer}>
+                <PickerComponent
+                  style={styles.picker}
+                  setLanguage={setLanguage}
+                  language={language}
+                />
+              </View>
+            </View>
+          </ScrollView>
+        </>
+        {/* )} */}
       </SafeAreaView>
     </View>
   );
