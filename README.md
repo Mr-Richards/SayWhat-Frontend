@@ -16,7 +16,7 @@ To get up and running follow these steps:
 (be sure that prettier doesnt format this file - no semi colon or spaces!)
   
 * follow <a href="" target="_blank" rel="noreferrer">this<a /> link for a tutorial on how to set up AWS aplify for the authentication service for the back end
-* run `npm start` from the frontend repo - then press `i` or `a` to run the app on the iOS simulator or the Android simulator respectively .
+* run `npm start` from the frontend repo - then press `i` or `a` to run the app on the iOS simulator or the Android simulator respectively.
 * to run the app on mobile be sure to have the expo client installed on your mobile device and scan the QR code provided in the terminal.
 
 ## APIs used
