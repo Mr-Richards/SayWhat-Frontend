@@ -38,7 +38,7 @@ Express <br />
 Sequelize <br />
 AWS with Amplify 
 
-### Demo
+## Demo
 I created a demonstration video where I do a brief walkthrough of the apps functionallity: <br />
 https://youtu.be/6dM_vt9v-dA
 
