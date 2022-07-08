@@ -1,4 +1,4 @@
-# SayWhat - frontend
+# SayWhat - Frontend
 A translator app which uses optical character recognition to identify text in a captured photo, automatically recognising the language and translating to a desired language of choice. 
 
 First project learning React Native
