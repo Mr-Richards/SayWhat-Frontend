@@ -29,17 +29,17 @@ To get up and running follow these steps:
   
 ## Tech Stack
 ### Front End:
-JavaScript
+JavaScript <br />
 React Native
 
 ### Back End:
-Node.js
-Express 
-Sequelize
+Node.js <br />
+Express <br />
+Sequelize <br />
 AWS with Amplify 
 
 ### Demo
-I created a demonstration video where I do a brief walkthrough of the apps functionallity. <br />
+I created a demonstration video where I do a brief walkthrough of the apps functionallity: <br />
 https://youtu.be/6dM_vt9v-dA
 
 
