@@ -35,7 +35,8 @@ React Native
 ### Back End:
 Node.js <br />
 Express <br />
-Sequelize <br />
+PostgreSQL <br />
+Heroku <br />
 AWS with Amplify 
 
 ## Demo
