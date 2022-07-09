@@ -21,7 +21,7 @@ To get up and running follow these steps:
 
 ## APIs used
 ### Microsoft Translator Text:
-  * part of the Azure Cognitive Services, cloud based machince translation service.
+  * part of the Azure Cognitive Services, cloud based machine translation service.
   
 ### OCR Space Free OCR API:
   * provides a simple way of parsing images and getting the extracted text results returned in a JSON format.
