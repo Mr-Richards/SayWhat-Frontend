@@ -1,5 +1,5 @@
 # SayWhat - Frontend
-A translator app which uses optical character recognition to identify text in a captured photo, automatically recognising the language and translating to a desired language. Users and previous translations are stored in a PostgreSQL database hosted by a Heroku server. User authentication is done by AWS with amplify.
+A translator app which uses optical character recognition to identify text in a captured photo, automatically recognizing the language and translating to a desired language. Users and previous translations are stored in a PostgreSQL database hosted by a Heroku server. User authentication is done by AWS with amplify.
 
 This is my first project learning React Native.
 
