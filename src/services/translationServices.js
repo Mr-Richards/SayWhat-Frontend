@@ -1,4 +1,4 @@
-const baseURL = 'http://192.168.1.191:3000/translations';
+const baseURL = 'https://say-what.herokuapp.com/translations';
 
 export const postTranslation = async (translation) => {
   try {

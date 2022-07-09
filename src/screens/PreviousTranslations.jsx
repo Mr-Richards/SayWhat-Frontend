@@ -11,6 +11,7 @@ export const PreviousTranslations = () => {
   const fetchPrevTrans = async () => {
     const response = await getTranslationsByUserId(userId);
     setPrevTrans(response);
+    console.log('prevTrans', prevTrans);
   };
 
   useEffect(() => {
@@ -20,7 +21,8 @@ export const PreviousTranslations = () => {
   return (
     <SafeAreaView style={styles.safeAreaViewContainer}>
       <ScrollView style={styles.scrollConatainer}>
-        {prevTrans[0] &&
+        {prevTrans &&
+          prevTrans[0] &&
           prevTrans.map((translation) => (
             <View style={styles.individual} key={translation.id}>
               <Text>{translation.original}</Text>

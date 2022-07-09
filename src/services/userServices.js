@@ -1,4 +1,4 @@
-const baseURL = 'http://192.168.1.191:3000/user';
+const baseURL = 'https://say-what.herokuapp.com/user';
 
 export const createUser = async (user) => {
   try {
