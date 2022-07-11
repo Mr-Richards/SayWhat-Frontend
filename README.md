@@ -8,7 +8,7 @@ To get up and running follow these steps:
 * run `npm install` from both backend and frontend root directories (<a href="https://github.com/Mr-Richards/SayWhat-Backend" target="_blank" rel="noreferrer">backend repo<a />).
 * subscribe and create an api key with Rapid API's <a href="https://rapidapi.com/microsoft-azure-org-microsoft-cognitive-services/api/microsoft-translator-text/" target="_blank" rel="noreferrer">Microsoft Translator Text API. <a /> 
 * sign up to recieve an api key with <a href="https://ocr.space/ocrapi" target="_blank" rel="noreferrer">OCR Spaces Free OCR API. <a />
-* create a .env file in the frontend repo with the following content:
+* create a .env file in the root directory of the frontend repo with the following content:
   
       FREE_OCR_API_KEY_2=#insert your OCR API here#
       RAPID_API_KEY=#insert your Mictosoft Translator Text API here#
