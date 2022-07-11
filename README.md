@@ -13,7 +13,7 @@ To get up and running follow these steps:
       FREE_OCR_API_KEY_2=#insert your OCR API here#
       RAPID_API_KEY=#insert your Mictosoft Translator Text API here#
 
-(be sure that prettier doesnt format this file - no semi colon or spaces!)
+(be sure that prettier doesnt format this file - no semi colon or spaces)
   
 * follow <a href="" target="_blank" rel="noreferrer">this<a /> link for a tutorial on how to set up AWS aplify if you wish to create your own authentication service for the login.
 * run `npm start` from the frontend repo - then press `i` or `a` to run the app on the iOS simulator or the Android simulator respectively.
